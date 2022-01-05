@@ -1,0 +1,12 @@
+
+[Unit]
+Description=Distance
+
+[Service]
+User=pi
+EnvironmentFile=/home/pi/distance/distance.env
+Type=simple
+ExecStart=/usr/bin/env python3 /home/pi/distance/distance.py
+
+[Install]
+WantedBy=multi-user.target

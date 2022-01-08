@@ -28,27 +28,18 @@ tof = VL53L1X.VL53L1X(i2c_bus=1, i2c_address=0x29)
 #the type of the return value will be the same as of the default value
 #if the default value is boolean a value of "1" of the system variable will lead to a true value, all others to false
 def sys_var_to_var(sys_var, default_value):
-    print("CurSysVar: %s" % sys_var)
     if type(default_value) is int:
-        print("it is a int")
         return int(os.getenv(sys_var, default_value))
     elif type(default_value) is float:
-        print("it is a float")
         return float(os.getenv(sys_var, default_value))
     elif type(default_value) is bool:
-        print("it is a bool")
         if default_value:
-            print("default is true setting 1")
             cur_value = 1
         else:
-            print("default is false setting 0")
             cur_value = 0
-        print("Sys_var has value: %s" %os.getenv(sys_var))
         if int(os.getenv(sys_var, cur_value)) == 1:
-            print("Total result is 1")
             return True
         else:
-            print("Total result is 0")
             return False
     else:
         return os.getenv(sys_var, default_value)

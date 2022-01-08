@@ -100,9 +100,11 @@ while running:
         
         r = requests.get(url, headers=my_headers, json=payload)
         
-        #tof.stop_ranging()
+        tof.stop_ranging()
         time.sleep(time_after_hit)
-        #tof.start_ranging(ranging_value)
+        tof.start_ranging(0)
+        tof.stop_ranging()
+        tof.start_ranging(ranging_value)
     else:
         if debug:
             print ("Distance: {}mm".format(distance_in_mm))

@@ -98,7 +98,7 @@ while running:
         print ("Hit: {}mm".format(distance_in_mm))
         sys.stdout.flush()
         
-        r = requests.get(url, headers=my_headers, json=payload)
+        r = requests.post(url, json=payload)
         
         tof.stop_ranging()
         time.sleep(time_after_hit)
